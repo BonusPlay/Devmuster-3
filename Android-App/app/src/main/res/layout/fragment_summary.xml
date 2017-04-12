@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvMessage"
+        android:text="Zadzwoń, aby podać więcej informacji"
+        android:layout_width="wrap_content"
+        android:textAlignment="center"
+        android:textSize="21sp"
+        android:layout_marginTop="32sp"
+        android:layout_centerInParent="true"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        android:id="@+id/ivPhone"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/ic_phone"
+        android:layout_above="@+id/tvMessage"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/bExit"
+        android:text="Wyjście"
+        android:textColor="@android:color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="16dp"/>
+
+</RelativeLayout>

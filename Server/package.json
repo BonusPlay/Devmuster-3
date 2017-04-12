@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.3",
+    "express": "~4.15.2",
+    "glob-all": "^3.1.0",
+    "jade": "~1.11.0",
+    "morgan": "~1.8.1",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4",
+    "serve-favicon": "~2.4.2",
+    "socket.io": "^1.7.3"
+  }
+}

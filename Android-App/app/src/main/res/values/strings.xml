@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">HelpMe</string>
+
+    <string name="exit_message">Cofnij ponownie, aby wyjść.</string>
+    <string name="connection">Błąd pobierania</string>
+    <string name="internet">Pobieranie danych nie powiodło się. Sprawdź czy masz połączenie z internetem</string>
+    <string name="try_again">Spróbuj ponownie</string>
+    <string name="exit">Wyjście</string>
+    <string name="result">Wynik</string>
+    <string name="next_question">Następne pytanie</string>
+    <string name="username">Podaj imię i nazwisko</string>
+    <string name="accept">Zatwierdź</string>
+    <string name="name">Imię</string>
+    <string name="surname">Nazwisko</string>
+
+    <string name="key_maps">AIzaSyB8Oz2odeob7J46fFfICB_j01XwqmNVJbk</string>
+    <string name="action_accept">Zatwierdź</string>
+</resources>

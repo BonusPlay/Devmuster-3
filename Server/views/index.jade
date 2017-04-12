@@ -1,0 +1,73 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset='UTF-8')
+		title Client TEST
+		meta(name='viewport', content='initial-scale=1.0, user-scalable=no')
+		link(href='/stylesheets/index.css', rel='stylesheet')
+		link(href='https://fonts.googleapis.com/css?family=Lato|Open+Sans|Palanquin+Dark|Roboto|Slabo+27px', rel='stylesheet')
+	body
+		#container
+			#header_wrapper
+				#logo_wrapper
+					| Awesome Logo here
+				#actions_status_wrapper
+					.status_action
+						| Pending: 
+						span#pending_number 0
+					.status_action
+						| In Progress: 
+						span#in-progress_number 0
+					.status_action.last_status_action
+						| Completed: 
+						span#completed_number 0
+				div(style='clear: both;')
+			#main_wrapper
+				#map_wrapper
+				#details_wrapper
+					#details_content
+						#details_wrappers_header
+							#details_arrow.details_wrappers_header_item �
+							#details_buttons
+								.details_wrappers_header_item.details_button_border.detail_selected Log
+								.details_wrappers_header_item.details_button_border.border_last Settings
+							div(style='clear:both;')
+						#log_content.details_main_panel.panel_active
+							table#log_table
+								tr
+									th Name
+									th Date
+									th Status
+						#settings_content.details_main_panel
+							.onoffswitch
+								input#show_priorities_button.onoffswitch-checkbox(type='checkbox', name='onoffswitch')
+								label.onoffswitch-label(for='show_priorities_button')
+									span.onoffswitch-inner
+									span.onoffswitch-switch
+							.settings_label Show Priorities
+						#marker_content.details_main_panel
+							h2 Details
+							table#marker_table
+								tr
+									th Attribute
+									th Value
+								tr
+									td Event Type
+									td#event-type
+								tr
+									td Reported by
+									td#reported-by
+								tr
+									td People involved
+									td#people-involved
+								tr
+									td Phone number
+									td#phone-number
+								tr
+									td Priority
+									td#priority
+							button#accept_request_button Accept request
+			script(src='https://code.jquery.com/jquery-3.2.1.min.js', crossorigin='anonymous')
+			script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js')
+			script(src='/javascripts/index.js')
+			script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7EW35tOUgzaAg3y1NhyGk2k-hmTYzVI&callback=initMap', async='', defer='')

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client TEST</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link href="../public/stylesheets/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Palanquin+Dark|Roboto|Slabo+27px" rel="stylesheet">
+</head>
+<body>
+<div id="infoBackground">
+    <div id="infoWrapper">
+        <span id="no_threat">
+            The planet is safe!
+        </span>
+        <button id="infoWrapperClose">Close</button>
+    </div>
+</div>
+<div id="container">
+    <div id="header_wrapper">
+        <div id="logo_wrapper"><img src="../public/images/logo.png"></div>
+        <div id="actions_status_wrapper">
+            <div class="status_action">Pending: <span id="pending_number">0</span></div>
+            <div class="status_action">In Progress: <span id="in-progress_number">0</span></div>
+            <div class="status_action last_status_action">Completed: <span id="completed_number">0</span></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <div id="main_wrapper">
+        <div id="map_wrapper"></div>
+        <div id="details_wrapper">
+            <div id="details_content">
+                <div id="details_wrappers_header">
+                    <div id="details_arrow" class="details_wrappers_header_item"></div>
+                    <div id="details_buttons">
+                        <div class="details_wrappers_header_item details_button_border detail_selected">Log</div>
+                        <div class="details_wrappers_header_item details_button_border border_last">Settings</div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div id="log_content" class="details_main_panel panel_active">
+                    <table id="log_table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Priority</th>
+                        </tr>
+                    </table>
+                </div>
+                <div id="settings_content" class="details_main_panel">
+                    <div class="settings_label">Show Priorities</div>
+                    <div id="switch" class="onoffswitch">
+                        <input id="show_priorities_button" type="checkbox" name="onoffswitch" class="onoffswitch-checkbox">
+                        <label id="show_priorities_label" for="show_priorities_button" class="onoffswitch-label"><span class="onoffswitch-inner"></span><span class="onoffswitch-switch"></span></label>
+                    </div>
+                    <br>
+                    <label for="circle_size" class="settings_label">Circle size</label><br>
+                    <input onchange="circleChange(this)" id="circle_size" type="number" step="1" min="30" max="200" value="30">
+                    <br>
+                    <button id="predict_button">Predict potentional danger zones</button>
+                    <br>
+
+                </div>
+                <div id="marker_content" class="details_main_panel">
+                    <h2>Details</h2>
+                    <table id="marker_table">
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Event Type</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Reported by</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>People involved</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Phone number</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Priority</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                    <button id="accept_request_button" onclick="">Accept request</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script src="../public/javascripts/index.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX7EW35tOUgzaAg3y1NhyGk2k-hmTYzVI&amp;callback=initMap" async="" defer=""></script>
+</div>
+</body>
+</html>

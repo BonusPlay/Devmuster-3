@@ -1,0 +1,155 @@
+#!/usr/bin/env node
+'use strict';
+
+var app 	= require('../app');
+var debug 	= require('debug')('client:server');
+var http 	= require('http');
+var myIo	= require('../io');
+var models 	= require('../models');
+var event 	= require('../models/event');
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || '3070');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+var server = http.createServer(app);
+var io = require('socket.io')(server);
+myIo.io = io;
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+models.sequelize.sync().then(function() {
+	server.listen(port);
+	server.on('error', onError);
+	server.on('listening', onListening);
+
+	io.on('connection', function(socket) {
+		socket.on('addInProgress', function(id) {
+			models.Event.findOne({
+				where: {
+					id: id
+				}
+			}).then(function (event, err) {
+				if (err)
+					return next(err);
+				if (event)
+				{
+					event.status = 'inProgress';
+					
+					event.save().then(function(event, err) {
+						if (err)
+							return;	
+						io.emit('addInProgress', event);
+					});
+				}
+				else
+					return;
+			}).error(function(err) {
+				console.log(err);
+				return;
+			});
+		});
+
+		socket.on('predict', function(array) {
+			const kmeans = require('ml-kmeans');
+
+			let ans = kmeans(array, 1);
+			console.log(ans);
+		});
+		
+		socket.on('addCompleted', function(id) {
+			models.Event.findOne({
+				where: {
+					id: id
+				}
+			}).then(function (event, err) {
+				if (err)
+					return next(err);
+				if (event)
+				{
+					event.status = 'completed';
+					
+					event.save().then(function(event, err) {
+						if (err)
+							return;
+						io.emit('addCompleted', event);
+					});
+				}
+				else
+					return;
+			}).error(function(err) {
+				console.log(err);
+				return;
+			});
+		});
+	});
+});
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
