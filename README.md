@@ -6,3 +6,8 @@ This application allows you quickly to request help at your location and shorten
  - Send event data in JSON over SMS to the SMSGateway
  - SMSGateway sends it to server using REST API
  - Data is viewable and modifiable from web client
+ 
+# Contributors
+ - [BonusPlay3](https://bonusplay.pl)
+ - [MrCookie](https://github.com/MrCookie)
+ - [dzordzz55](https://github.com/dzordz55)
